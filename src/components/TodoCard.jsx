@@ -16,18 +16,17 @@ export default function TodoCard({ todo }) {
     return (
         <>
             <Card border={border} className="my-3">
-                {/* <Card.Header>{!completed && "Not"} Completed</Card.Header> */}
                 <Card.Header>{todo.date}</Card.Header>
                 <Card.Body>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text>{todo.description}</Card.Text>
-                    <Button variant="primary" href="" className="mx-2">
+                    <Button variant="primary" href="" className="me-2">
                         <i className="bi bi-basket"></i>
                     </Button>
-                    <Button variant="secondary" href={`todo/${todo.id}`} className="">
+                    <Button variant="secondary" href={`todo/${todo.id}`} className="me-2">
                         <i className="bi bi-pencil"></i>
                     </Button>
-                    <Button variant="danger" onClick={deleteTodo} className="mx-2">
+                    <Button variant="danger" onClick={deleteTodo} className="me-2">
                         <i className="bi bi-trash3"></i>
                     </Button>
                 </Card.Body>

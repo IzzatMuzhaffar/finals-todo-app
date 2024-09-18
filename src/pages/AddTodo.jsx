@@ -35,7 +35,7 @@ export default function AddTodo() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         type="text"
-                        placeholder="Get software developer job"
+                        placeholder="Anne's birthday"
                         required
                     />
                 </Form.Group>
@@ -48,7 +48,7 @@ export default function AddTodo() {
                         onChange={(e) => setDescription(e.target.value)}
                         as="textarea"
                         rows={3}
-                        placeholder={`1. Create amazing project\n2. Apply to Google & Netflix\n3. Crush interview`}
+                        placeholder={`- Friends & family\n- Barbeque\n- Casual`}
                         required
                     />
                 </Form.Group>
@@ -68,7 +68,7 @@ export default function AddTodo() {
                 <Form.Check
                     type="checkbox"
                     id="completed"
-                    label="Mark as completed"
+                    label="Mark prep as completed"
                     checked={completed}
                     onChange={(e) => setCompleted(e.target.checked)}
                     className="mb-3"
