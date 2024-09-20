@@ -10,6 +10,7 @@ import IconButton from "./components/IconButton";
 import ShoppingList from "./pages/ShoppingList";
 
 function Layout() {
+
   return (
     <Row>
       <Col
@@ -19,6 +20,7 @@ function Layout() {
       >
         <IconButton className={'bi bi-house'} href="/" isTop />
         <IconButton className={'bi bi-plus-square'} href="/add" />
+        <IconButton className={'bi bi-cart'} href="/shopping" />
       </Col>
       <Col sm={11}>
         <Outlet />

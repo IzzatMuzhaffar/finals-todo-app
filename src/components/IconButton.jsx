@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap'
 
 export default function IconButton({ isTop, className, onClick, href }) {
-    let margin = "light"
+    let margin = "light my-3"
 
     if (isTop) {
         margin = "light my-4"

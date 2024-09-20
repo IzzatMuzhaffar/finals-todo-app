@@ -20,9 +20,6 @@ export default function TodoCard({ todo }) {
                 <Card.Body>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text>{todo.description}</Card.Text>
-                    <Button variant="primary" href="" className="me-2">
-                        <i className="bi bi-basket"></i>
-                    </Button>
                     <Button variant="secondary" href={`todo/${todo.id}`} className="me-2">
                         <i className="bi bi-pencil"></i>
                     </Button>

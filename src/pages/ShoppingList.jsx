@@ -1,11 +1,11 @@
 import { Container } from 'react-bootstrap'
-import Table from "../components/Table.jsx";
+import ListTable from "../components/ListTable.jsx";
 
 export default function ShoppingList() {
 
     return (
         <Container>
-            <Table />
+            <ListTable />
         </Container>
     )
 }

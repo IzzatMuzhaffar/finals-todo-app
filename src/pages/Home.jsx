@@ -7,7 +7,7 @@ export default function Home() {
     const todos = useContext(TodoContext).todos
     return (
         <Container>
-            <h1 className="my-3">House Party Planner</h1>
+            <h1 className="my-3">Shopping Todo App</h1>
             <Row>
                 <CardGroup todos={todos} />
             </Row>

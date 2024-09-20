@@ -68,7 +68,7 @@ export default function AddTodo() {
                 <Form.Check
                     type="checkbox"
                     id="completed"
-                    label="Mark prep as completed"
+                    label="Mark as completed"
                     checked={completed}
                     onChange={(e) => setCompleted(e.target.checked)}
                     className="mb-3"
