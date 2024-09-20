@@ -29,7 +29,7 @@ const itemsSlice = createSlice({
         deleteItem: (state, action) => {
             const index = state.findIndex((item) => item.id === action.payload);
             if (index !== -1) {
-                state.splice(index, 1); // Mutably remove the item
+                state.splice(index, 1);
             }
         },
         addLine: (state) => {

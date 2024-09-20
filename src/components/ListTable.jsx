@@ -50,7 +50,7 @@ export default function ListTable() {
 
     return (
         <>
-            <h1 className='my-3'>Shopping List</h1>
+            <h1 className='my-3'>Shopping List 🧾🍞🥑🍎🍉</h1>
             <Table>
                 <thead>
                     <tr>

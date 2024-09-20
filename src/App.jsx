@@ -8,6 +8,10 @@ import Home from "./pages/Home";
 import EditTodo from "./pages/EditTodo";
 import IconButton from "./components/IconButton";
 import ShoppingList from "./pages/ShoppingList";
+import { AuthContext } from "./AuthContext";
+import Login from "./pages/Login";
+import RequireAuth from "./components/RequireAuth";
+
 
 function Layout() {
 
@@ -21,6 +25,7 @@ function Layout() {
         <IconButton className={'bi bi-house'} href="/" isTop />
         <IconButton className={'bi bi-plus-square'} href="/add" />
         <IconButton className={'bi bi-cart'} href="/shopping" />
+        <IconButton className={'bi bi-person-circle'} href="/login" />
       </Col>
       <Col sm={11}>
         <Outlet />
@@ -31,20 +36,25 @@ function Layout() {
 
 export default function App() {
   const [todos, setTodos] = useLocalStorage("todos", [])
+  const [token, setToken] = useLocalStorage("token", null)
 
   return (
-    <TodoContext.Provider value={{ todos, setTodos }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="add" element={<AddTodo />} />
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="todo/:id" element={<EditTodo />} />
-            <Route path="shopping" element={<ShoppingList />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </TodoContext.Provider>
+    <AuthContext.Provider value={{token, setToken}}>
+      <TodoContext.Provider value={{ todos, setTodos }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="login" element={<Login />}/>
+            <Route path="/" element={<RequireAuth><Layout /></RequireAuth>}>
+              <Route index element={<Home />} />
+              <Route path="add" element={<AddTodo />} />
+              <Route path="*" element={<ErrorPage />} />
+              <Route path="todo/:id" element={<EditTodo />} />
+              <Route path="shopping" element={<ShoppingList />} />              
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </TodoContext.Provider>
+    </AuthContext.Provider>
+
   )
 }

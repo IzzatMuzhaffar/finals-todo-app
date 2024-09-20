@@ -5,13 +5,41 @@ import { TodoContext } from "../contexts/TodoContext";
 export default function TodoCard({ todo }) {
     const completed = todo.completed
     const border = completed ? "success" : "danger"
+    const [timer, setTimer] = useState(0)
+    const [timerInterval, setTimerInterval] = useState(null)
     const setTodos = useContext(TodoContext).setTodos
+
+    const startTimer = () => {
+        if (timerInterval === null) {
+            const intervalID = setInterval(() => {
+                setTimer((prevTimer) => prevTimer + 1)
+            }, 1000)
+            setTimerInterval(intervalID)
+        }
+    }
+
+    const pauseTimer = () => {
+        clearInterval(timerInterval)
+        setTimerInterval(null)
+    }
+
+    const resetTimer = () => {
+        clearInterval(timerInterval)
+        setTimerInterval(null)
+        setTimer(0)
+    }
 
     const deleteTodo = () => {
         setTodos((prevTodos) =>
             prevTodos.filter((prevTodo) => prevTodo.id !== todo.id)
         )
     }
+
+    useEffect(() => {
+        return () => {
+            clearInterval(timerInterval)
+        }
+    }, [timerInterval])
 
     return (
         <>
@@ -20,6 +48,16 @@ export default function TodoCard({ todo }) {
                 <Card.Body>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text>{todo.description}</Card.Text>
+                    <p>Timer: {timer} seconds</p>
+                    <Button onClick={startTimer} className="me-2">
+                        <i className="bi bi-play"></i>
+                    </Button>
+                    <Button onClick={pauseTimer} className="me-2">
+                        <i className="bi bi-pause-fill"></i>
+                    </Button>
+                    <Button onClick={resetTimer} className="me-2">
+                        <i className="bi bi-arrow-clockwise"></i>
+                    </Button>
                     <Button variant="secondary" href={`todo/${todo.id}`} className="me-2">
                         <i className="bi bi-pencil"></i>
                     </Button>
